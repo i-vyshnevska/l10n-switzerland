@@ -16,7 +16,7 @@ class TestCreateInvoice(common.TransactionCase):
         invoice = self.env['account.invoice'].create(self.inv_values)
         invoice._onchange_partner_id()
         self.assertEqual(invoice.partner_banks_to_show(), self.bank_acc)
-        self.assertNotEqual(invoice.reference_type, 'isr')
+        self.assertNotEqual(invoice.reference_type, 'bvr')
 
         invoice.reference = '132000000000000000000000014'
         invoice.onchange_reference()
@@ -50,7 +50,7 @@ class TestCreateInvoice(common.TransactionCase):
         invoice = self.env['account.invoice'].create(self.inv_values)
         invoice._onchange_partner_id()
         self.assertEqual(invoice.partner_banks_to_show(), self.bank_acc)
-        self.assertNotEqual(invoice.reference_type, 'isr')
+        self.assertNotEqual(invoice.reference_type, 'bvr')
 
         invoice.reference = 'Not a BVR ref with 27 chars'
 
